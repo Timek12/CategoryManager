@@ -1,0 +1,45 @@
+[Spożywcze]
+
+- Chleb
+- Masło
+- Mleko
+- Żółty ser
+- Jajka
+- Cukier
+- Mąka
+
+
+[Chemia]
+
+- Mydło
+- Płyn do mycia naczyń
+- Proszek do prania
+- Płyn do płukania tkanin
+- Środek czystości
+
+
+[Motoryzacja]
+
+- Odświeżacz powietrza
+- Płyn do spryskiwaczy
+- Olej silnikowy
+- Antyfrez
+- Wosk do karoserii
+
+
+[Elektronika]
+
+- Laptop
+- Smartfon
+- Telewizor
+- Słuchawki
+- Konsola do gier
+
+
+[Ubrania]
+
+- Koszulka
+- Spodnie
+- Buty
+- Kurtka
+- Skarpetki
