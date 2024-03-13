@@ -79,25 +79,31 @@ public class ShoppingListService {
     public void removeAllProducts() {
         this.categories.clear();
     }
-    public void removeAllProductsFromCategory(String categoryName) {
+    public boolean removeAllProductsFromCategory(String categoryName) {
         for (Category category : this.categories) {
             if (category.name.equals(categoryName)) {
-                category.products.clear();
-                return;
+                this.categories.remove(category);
+                return true;
             }
         }
+
+        return false;
     }
 
-    public void removeProductFromCategory(String categoryName, String productName) {
+    public boolean removeProductFromCategory(String categoryName, String productName) {
         for (Category category : this.categories) {
             if (category.name.equals(categoryName)) {
                 category.products.remove(productName);
-                return;
+                if(category.products.isEmpty()){
+                    this.categories.remove(category);
+                }
+                return true;
             }
         }
+        return false;
     }
 
-    public void saveShoppingListToFile() {
+    public boolean saveShoppingListToFile() {
         File file = new File("shoppingList.txt");
         try {
             PrintWriter writer = new PrintWriter(file);
@@ -109,9 +115,11 @@ public class ShoppingListService {
                 writer.println();
             }
             writer.close();
+            return true;
         }
         catch (Exception e) {
             System.out.println("Error occured: " + e.getMessage());
+            return false;
         }
     }
 }
