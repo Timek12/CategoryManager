@@ -47,4 +47,45 @@ public class CategoryService {
 
         return categories;
     }
+
+    public void displayCategories() {
+        if(this.categories.isEmpty()) {
+            System.out.println("No categories available.");
+            return;
+        }
+        System.out.println("Available categories:");
+        int i = 1;
+        for (Category category : this.categories) {
+            System.out.println(i + ". " + category.name);
+            i++;
+        }
+    }
+
+    public void displayProductsFromCategory(String categoryName) {
+        if(this.categories.isEmpty()) {
+            System.out.println("No categories available.");
+            return;
+        }
+
+        for (Category category : this.categories) {
+            if (category.name.equals(categoryName)) {
+                System.out.println("Available products from " + categoryName + " category:");
+                if(category.products.isEmpty()) {
+                    System.out.println("No products in this category.");
+                    return;
+                }
+                for (String product : category.products) {
+                    System.out.println(" - " + product);
+                }
+                System.out.println();
+                return;
+            }
+        }
+
+        System.out.println("Category not found");
+    }
+
+    public int getSize() {
+        return this.categories.size();
+    }
 }
