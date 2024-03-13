@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CategoryService {
-    private List<Category> categories;
+    public List<Category> categories;
     public CategoryService(String filename) {
         this.categories = initializeCategories(filename);
     }
@@ -46,20 +46,5 @@ public class CategoryService {
         }
 
         return categories;
-    }
-    public void addCategory(String name) {
-        // add category to the list
-    }
-
-    public void removeCategory(String name) {
-        // remove category from the list
-    }
-
-    public void addProduct(String categoryName, String productName) {
-        // add product to the category
-    }
-
-    public void removeProduct(String categoryName, String productName) {
-        // remove product from the category
     }
 }
