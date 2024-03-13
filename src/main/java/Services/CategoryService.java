@@ -74,8 +74,10 @@ public class CategoryService {
                     System.out.println("No products in this category.");
                     return;
                 }
+                int i = 1;
                 for (String product : category.products) {
-                    System.out.println(" - " + product);
+                    System.out.println(i + ". " + product);
+                    i++;
                 }
                 System.out.println();
                 return;
