@@ -69,8 +69,13 @@ public class Program {
                             System.out.println("Invalid category number.");
                             break;
                         }
-                        shoppingListService.removeAllProductsFromCategory(categoryService.categories.get(categoryIndex - 1).name);
-                        System.out.println("All products from " + categoryService.categories.get(categoryIndex - 1).name + " category have been removed successfully.");
+                        boolean isCategoryRemoved = shoppingListService.removeAllProductsFromCategory(categoryService.categories.get(categoryIndex - 1).name);
+                        if(isCategoryRemoved){
+                            System.out.println("All products from " + categoryService.categories.get(categoryIndex - 1).name + " category have been removed successfully.");
+                        }
+                        else{
+                            System.out.println("Category not found in the shopping list.");
+                        }
                         break;
                     case 6:
                         categoryService.displayCategories();
@@ -92,12 +97,19 @@ public class Program {
                             break;
                         }
 
-                        shoppingListService.removeProductFromCategory(categoryService.categories.get(categoryIndex - 1).name, categoryService.categories.get(categoryIndex - 1).products.get(productIndex - 1));
-                        System.out.println("Product has been removed successfully.");
+                        boolean isProductRemoved = shoppingListService.removeProductFromCategory(categoryService.categories.get(categoryIndex - 1).name, categoryService.categories.get(categoryIndex - 1).products.get(productIndex - 1));
+                        if(isProductRemoved){
+                            System.out.println("Product has been removed successfully.");
+                        }
+                        else{
+                            System.out.println("Product not found in the shopping list.");
+                        }
                         break;
                     case 7:
-                        shoppingListService.saveShoppingListToFile();
-                        System.out.println("Shopping list has been saved successfully.");
+                        boolean isFileSaved = shoppingListService.saveShoppingListToFile();
+                        if(isFileSaved) {
+                            System.out.println("Shopping list has been saved successfully.");
+                        }
                         break;
 
                     case 8:
