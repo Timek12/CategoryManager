@@ -2,6 +2,8 @@ package Services;
 
 import Models.Category;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,6 +74,44 @@ public class ShoppingListService {
                 category.products.add(productName);
                 return;
             }
+        }
+    }
+    public void removeAllProducts() {
+        this.categories.clear();
+    }
+    public void removeAllProductsFromCategory(String categoryName) {
+        for (Category category : this.categories) {
+            if (category.name.equals(categoryName)) {
+                category.products.clear();
+                return;
+            }
+        }
+    }
+
+    public void removeProductFromCategory(String categoryName, String productName) {
+        for (Category category : this.categories) {
+            if (category.name.equals(categoryName)) {
+                category.products.remove(productName);
+                return;
+            }
+        }
+    }
+
+    public void saveShoppingListToFile() {
+        File file = new File("shoppingList.txt");
+        try {
+            PrintWriter writer = new PrintWriter(file);
+            for (Category category : this.categories) {
+                writer.println("[" + category.name + "]");
+                for (String product : category.products) {
+                    writer.println(" - " + product);
+                }
+                writer.println();
+            }
+            writer.close();
+        }
+        catch (Exception e) {
+            System.out.println("Error occured: " + e.getMessage());
         }
     }
 }
