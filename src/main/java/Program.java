@@ -9,7 +9,7 @@ public class Program {
     public static void main(String args[]) {
         CategoryService categoryService = new CategoryService("src/main/java/products.txt");
         ShoppingListService shoppingListService = new ShoppingListService();
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in, "UTF-8");
 
         while (true) {
             shoppingListService.displayMenu();

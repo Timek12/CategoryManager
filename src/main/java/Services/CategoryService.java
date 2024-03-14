@@ -19,7 +19,7 @@ public class CategoryService {
 
         try {
             File file = new File(filename);
-            Scanner scanner = new Scanner(file);
+            Scanner scanner = new Scanner(file, "UTF-8");
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine().trim();
 
