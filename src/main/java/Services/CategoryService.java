@@ -13,7 +13,7 @@ public class CategoryService {
     public CategoryService(String filename) {
         this.categories = initializeCategories(filename);
     }
-    public List<Category> initializeCategories(String filename) {
+    public static List<Category> initializeCategories(String filename) {
         List<Category> categories = new ArrayList<>();
         Category currentCategory = null;
 
