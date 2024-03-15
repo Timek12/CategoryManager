@@ -10,20 +10,9 @@ import java.util.List;
 public class ShoppingListService {
     public List<Category> categories = new ArrayList<>();
 
-    public void displayMenu() {
-        System.out.println("1. Add product to shopping list.");
-        System.out.println("2. Display all products from shopping list.");
-        System.out.println("3. Display all products from a specific category.");
-        System.out.println("4. Remove all products from shopping list.");
-        System.out.println("5. Remove all products from a specific category.");
-        System.out.println("6. Remove a product from a specific category.");
-        System.out.println("7. Save shopping list to file.");
-        System.out.println("8. Exit.");
-    }
-
     public void displayAllProducts() {
         if (this.categories.isEmpty()) {
-            System.out.println("No products in shopping list.");
+            System.out.println("No products in the shopping list.");
             return;
         }
         for (Category category : this.categories) {
@@ -50,7 +39,7 @@ public class ShoppingListService {
                 return;
             }
         }
-        System.out.println("Category not found");
+        System.out.println("Category not found in the shopping list.");
     }
 
     public void addProductToCategory(String categoryName, String productName) {
@@ -76,9 +65,11 @@ public class ShoppingListService {
             }
         }
     }
+
     public void removeAllProducts() {
         this.categories.clear();
     }
+
     public boolean removeAllProductsFromCategory(String categoryName) {
         for (Category category : this.categories) {
             if (category.name.equals(categoryName)) {
@@ -93,11 +84,15 @@ public class ShoppingListService {
     public boolean removeProductFromCategory(String categoryName, String productName) {
         for (Category category : this.categories) {
             if (category.name.equals(categoryName)) {
-                category.products.remove(productName);
-                if(category.products.isEmpty()){
-                    this.categories.remove(category);
+                for(String product : category.products){
+                    if(product.equals(productName)){
+                        category.products.remove(productName);
+                        if(category.products.isEmpty()){
+                            this.categories.remove(category);
+                        }
+                        return true;
+                    }
                 }
-                return true;
             }
         }
         return false;
