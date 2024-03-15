@@ -9,10 +9,12 @@ public class Program {
     public static void main(String args[]) {
         CategoryService categoryService = new CategoryService("src/main/java/products.txt");
         ShoppingListService shoppingListService = new ShoppingListService();
+        shoppingListService.categories = categoryService.initializeCategories("shoppingList.txt");
+
         Scanner scanner = new Scanner(System.in, "UTF-8");
 
         while (true) {
-            shoppingListService.displayMenu();
+            displayMenu();
             System.out.print("Enter your choice: ");
             int productIndex, categoryIndex;
             try {
@@ -119,10 +121,21 @@ public class Program {
                         System.out.println("Invalid input. Please enter a number from 1 to 8.");
                 }
                 System.out.println("Press anything to continue...");
-                scanner.nextLine();
+                String check = scanner.nextLine();
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number from 1 to 8.");
             }
         }
+    }
+
+    public static void displayMenu() {
+        System.out.println("1. Add product to shopping list.");
+        System.out.println("2. Display all products from shopping list.");
+        System.out.println("3. Display all products from a specific category.");
+        System.out.println("4. Remove all products from shopping list.");
+        System.out.println("5. Remove all products from a specific category.");
+        System.out.println("6. Remove a product from a specific category.");
+        System.out.println("7. Save shopping list to file.");
+        System.out.println("8. Exit.");
     }
 }
